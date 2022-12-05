@@ -1,14 +1,99 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <p id="hey" style="color: rgb(234, 127, 255)"></p>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Project</title>
-    <h1 id="h1">Hello World</h1>
-  </head>
-  <body>
-    <script defer type="text/javascript" src="app.js"></script>
-  </body>
+<html>
+<head>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Style the header */
+.header {
+  grid-area: header;
+  background-color: #07060600;
+  padding: 30px;
+  text-align: center;
+  font-size: 30px;
+}
+
+/* The grid container */
+.grid-container {
+  display: grid;
+  grid-template-areas: 
+    'header header header header header header' 
+    'left middle middle middle middle right' 
+    'footer footer footer footer footer footer';
+  /* grid-column-gap: 10px; - if you want gap between the columns */
+} 
+
+.left,
+.middle,
+.right {
+  padding: 40px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+
+/* Style the left column */
+.left {
+  grid-area: left;
+}
+
+/* Style the middle column */
+.middle {
+  grid-area: middle;
+}
+
+/* Style the right column */
+.right {
+  grid-area: right;
+}
+
+/* Style the footer */
+.footer {
+  grid-area: footer;
+  background-color: #f1f1f1;
+  padding: 10px;
+  text-align: center;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media (max-width: 600px) {
+  .grid-container  {
+    grid-template-areas: 
+      ;
+  }
+}
+</style>
+</head>
+<body>
+
+<h2>Best Brews in Town</h2>
+<p>Using an api we compiled a list of some of the best breweries in town</p>
+<p>Text if needed</p>
+<p><strong>Note:</strong> add content</p>
+
+<div class="grid-container">
+  <div class="header">
+    <h2>Brewers</h2>
+  </div>
+  
+  <div class="left" style="background-color:#aaa;">List of Breweries</div>
+  
+  <div class="middle" style="background-color:#bbb;">Brewery name</div>  
+  <ul class = "middle">
+    <p>Address</p>
+    <p>Phone number</p>
+    <p>website</p>
+    <p>Brewery type</p>
+  </ul>
+  
+  <div class="footer">
+    <p>Comment section</p>
+  </div>
+</div>
+
+</body>
 </html>
