@@ -5,7 +5,8 @@ fetch('https://api.openbrewerydb.org/breweries')
 let currentBrewery = {}
 
 function breweryList(brewery){
-    const breweryListBox = document.querySelector('.left')
+    console.log(brewery)
+    const breweryListBox = document.querySelector('#left')
     const breweryName = document.createElement('p')
     breweryName.textContent = brewery.name
     breweryName.addEventListener('click', () => displayBreweryData(brewery))
@@ -14,8 +15,8 @@ function breweryList(brewery){
 
 function displayBreweryData(brewery){
     currentBrewery = brewery
-
-    const address = document.querySelector("")
+    const breweryDetails = document.querySelector('#brewery-detail')
+    const address = document.createElement('p')
     let adressSetter = ""
     if(brewery.street){
         adressSetter = brewery.street
@@ -36,23 +37,25 @@ function displayBreweryData(brewery){
         adressSetter+=`/n${brewery.state}`
     }
     if(brewery.postal_code){
-        adressSetter+=`/n${brew.postal_code}`
+        adressSetter+=`/n${brewery.postal_code}`
     }
     if(brewery.country){
         adressSetter+=`/n${brewery.country}`
     }
     address.textContent = adressSetter
-    const address_2
-    const address_3
-    const city
-    const state
-    const postal_code
-    const country
-    const phone
-    const website_url
-
-
+    breweryDetails.appendChild(address)
 }
+//     const address_2
+//     const address_3
+//     const city
+//     const state
+//     const postal_code
+//     const country
+//     const phone
+//     const website_url
+
+
+// }
 // brewery_type": "micro",
 //         "street": "400 Brown Cir",
 //         "address_2": null,

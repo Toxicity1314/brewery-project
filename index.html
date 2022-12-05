@@ -1,24 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <p id="hey" style="color: rgb(234, 127, 255)"></p>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Project</title>
-  </head>
-  <body>
-    <header>
-        <h1>Brewery Project</h1>
-    </header>
-    <span class="left">
-        <!-- Brewery list goes here-->
-    </span>
-    <span class="grid-container">
-        <!--Brewery details goes here-->
-        <p> hello</p>
-    </span>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="./index.css" />
+        <script defer src="./index.js"></script>
+    </head>
+    <body>
+       <header>
+           <h1>Breweries!</h1>
+       </header>
+       <div id="container">
+            <section id="menu">
+                <h2>Brewery List</h2>
+                <div id="left">
+                    <!-- Brewery list here -->
+                </div>
+            </section>
 
-    <script defer type="text/javascript" src="index.js"></script>
-  </body>
+            <section id="middle">
+                <!-- Brewery details are in here! -->
+                <img id="dish-image" src=""/>
+                <div id="brewery-detail">
+                    <h3 id="dish-name"></h3>
+                    <p id="dish-description"></p>
+                    <h3 id="dish-price"></h3>
+                </div>
+                
+                <h3>
+                    Number in Cart: 
+                    <span id="number-in-cart">0</span>
+                    <br>
+                    <span id="cost"></span>
+                </h3>
+                <form id="cart-form">
+                    <input id="cart-amount" type="text" placeholder="Number to add..."/>
+                    <input type="submit" value="Add to Cart"></input>
+                </form>
+                
+            </section>
+        </div>
+    </body>
 </html>
