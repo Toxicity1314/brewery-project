@@ -16,7 +16,7 @@ body {
   background-color: #07060600;
   padding: 30px;
   text-align: center;
-  font-size: 35px;
+  font-size: 30px;
 }
 
 /* The grid container */
@@ -32,7 +32,7 @@ body {
 .left,
 .middle,
 .right {
-  padding: 10px;
+  padding: 40px;
   height: 300px; /* Should be removed. Only for demonstration */
 }
 
@@ -63,7 +63,7 @@ body {
 @media (max-width: 600px) {
   .grid-container  {
     grid-template-areas: 
-      
+      ;
   }
 }
 </style>
@@ -81,8 +81,14 @@ body {
   </div>
   
   <div class="left" style="background-color:#aaa;">List of Breweries</div>
-  <div class="middle" style="background-color:#bbb;">Brewery name</div>  
   
+  <div class="middle" style="background-color:#bbb;">Brewery name</div>  
+  <ul class = "middle">
+    <p>Address</p>
+    <p>Phone number</p>
+    <p>website</p>
+    <p>Brewery type</p>
+  </ul>
   
   <div class="footer">
     <p>Comment section</p>
