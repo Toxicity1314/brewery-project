@@ -2,6 +2,9 @@ fetch('https://api.openbrewerydb.org/breweries')
     .then(resp => resp.json())
     .then(breweries => breweries.forEach(brewery => breweryList(brewery)))
 
+const reviewForm = document.querySelector('form')
+reviewForm.addEventListener('submit', e => displayReview(e))
+console.log(reviewForm)
 let currentBrewery = {}
 
 function breweryList(brewery){
@@ -62,29 +65,16 @@ function adressSetter(brewery){
     return breweryAddress
 
 }
-//     const address_2
-//     const address_3
-//     const city
-//     const state
-//     const postal_code
-//     const country
-//     const phone
-//     const website_url
 
+function displayReview(e){
+    e.preventDefault()
+    
+    const newReview = document.querySelector('#reviews')
+    const reviewToAdd = document.createElement('p')
+    newReview.appendChild(reviewToAdd)
+    reviewToAdd.textContent = e.target['text'].value
+    console.log(newReview)
+    console.log(e.target["text"].value)
 
-// }
-// brewery_type": "micro",
-//         "street": "400 Brown Cir",
-//         "address_2": null,
-//         "address_3": null,
-//         "city": "Knox",
-//         "state": "Indiana",
-//         "county_province": null,
-//         "postal_code": "46534",
-//         "country": "United States",
-//         "longitude": "-86.627954",
-//         "latitude": "41.289715",
-//         "phone": "6308165790",
-//         "website_url": null,
-//         "updated_at": "2022-11-11T05:07:58.723Z",
-//         "created_at": "2022-11-11T05:07:58.723Z"
+}
+
