@@ -7,7 +7,7 @@ let currentBrewery = {}
 function breweryList(brewery){
     console.log(brewery)
     const breweryListBox = document.querySelector('#left')
-    const breweryName = document.createElement('p')
+    const breweryName = document.createElement('span')
     breweryName.textContent = brewery.name
     breweryName.addEventListener('click', () => displayBreweryData(brewery))
     breweryListBox.appendChild(breweryName)
@@ -16,33 +16,33 @@ function breweryList(brewery){
 function displayBreweryData(brewery){
     currentBrewery = brewery
     const breweryDetails = document.querySelector('#brewery-detail')
-    const address = document.createElement('p')
+    const address = document.querySelector('#brewery-description')
+    const name = document.querySelector('#brewery-name')
+    name.textContent = brewery.name
     let adressSetter = ""
     if(brewery.street){
-        adressSetter = brewery.street
+        adressSetter = `${brewery.street}<br>`
     }
     if(brewery.address_2){
-        adressSetter+= `/n${brewery.address_2}`
+        adressSetter+= `${brewery.address_2}<br>`
     }
     if(brewery.address_3){
-        adressSetter+= `/n${brewery.address_3}`
+        adressSetter+= `${brewery.address_3}<br>`
     }
     if(brewery.city){
-        adressSetter+=`/n${brewery.city}`
-    }
-    if(brewery.county_province){
-        adressSetter+=`/n${brewery.county_province}`
+        adressSetter+=`${brewery.city}, `
     }
     if(brewery.state){
-        adressSetter+=`/n${brewery.state}`
+        adressSetter+=`${brewery.state}, `
     }
     if(brewery.postal_code){
-        adressSetter+=`/n${brewery.postal_code}`
+        adressSetter+=`${brewery.postal_code}<br>`
     }
     if(brewery.country){
-        adressSetter+=`/n${brewery.country}`
+        adressSetter+=`${brewery.country}`
     }
-    address.textContent = adressSetter
+    console.log(adressSetter)
+    address.innerHTML = adressSetter
     breweryDetails.appendChild(address)
 }
 //     const address_2
