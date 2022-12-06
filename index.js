@@ -5,45 +5,62 @@ fetch('https://api.openbrewerydb.org/breweries')
 let currentBrewery = {}
 
 function breweryList(brewery){
-    console.log(brewery)
     const breweryListBox = document.querySelector('#left')
     const breweryName = document.createElement('span')
+    breweryListBox.appendChild(breweryName)
     breweryName.textContent = brewery.name
     breweryName.addEventListener('click', () => displayBreweryData(brewery))
-    breweryListBox.appendChild(breweryName)
+    
 }
 
 function displayBreweryData(brewery){
     currentBrewery = brewery
-    const breweryDetails = document.querySelector('#brewery-detail')
-    const address = document.querySelector('#brewery-description')
+    console.log(brewery)
     const name = document.querySelector('#brewery-name')
-    name.textContent = brewery.name
-    let adressSetter = ""
+    name.textContent = "hello"
+    
+    const breweryPhone = document.querySelector('#brewery-phone')
+    breweryPhone.textContent = brewery.phone
+    
+    const address = document.querySelector('#brewery-description')
+    address.innerHTML = adressSetter(brewery)
+
+    const website = document.querySelector('#brewery-website')
+    if(brewery.website_url){
+    website.textContent = brewery.website_url
+    }else{
+        website.textContent = "no website"
+    }
+    
+    const breweryType = document.querySelector('#brewery-type')
+    breweryType.textContent = brewery.brewery_type
+}
+
+function adressSetter(brewery){
+    let breweryAddress =""
     if(brewery.street){
-        adressSetter = `${brewery.street}<br>`
+        breweryAddress = `${brewery.street}<br>`
     }
     if(brewery.address_2){
-        adressSetter+= `${brewery.address_2}<br>`
+        breweryAddress+= `${brewery.address_2}<br>`
     }
     if(brewery.address_3){
-        adressSetter+= `${brewery.address_3}<br>`
+        breweryAddress+= `${brewery.address_3}<br>`
     }
     if(brewery.city){
-        adressSetter+=`${brewery.city}, `
+        breweryAddress+=`${brewery.city}, `
     }
     if(brewery.state){
-        adressSetter+=`${brewery.state}, `
+        breweryAddress+=`${brewery.state}, `
     }
     if(brewery.postal_code){
-        adressSetter+=`${brewery.postal_code}<br>`
+        breweryAddress+=`${brewery.postal_code}<br>`
     }
     if(brewery.country){
-        adressSetter+=`${brewery.country}`
+        breweryAddress+=`${brewery.country}`
     }
-    console.log(adressSetter)
-    address.innerHTML = adressSetter
-    breweryDetails.appendChild(address)
+    return breweryAddress
+
 }
 //     const address_2
 //     const address_3
