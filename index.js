@@ -4,23 +4,22 @@ fetch('https://api.openbrewerydb.org/breweries')
 
 const reviewForm = document.querySelector('form')
 reviewForm.addEventListener('submit', e => displayReview(e))
-console.log(reviewForm)
 let currentBrewery = {}
+const newReview = document.querySelector('#reviews')
+
 
 function breweryList(brewery){
     const breweryListBox = document.querySelector('#left')
     const breweryName = document.createElement('span')
     breweryListBox.appendChild(breweryName)
     breweryName.textContent = brewery.name
-    breweryName.addEventListener('click', () => displayBreweryData(brewery))
-    
+    breweryName.addEventListener('click', () => displayBreweryData(brewery))    
 }
 
 function displayBreweryData(brewery){
     currentBrewery = brewery
-    console.log(brewery)
     const name = document.querySelector('#brewery-name')
-    name.textContent = "hello"
+    name.textContent = brewery.name
     
     const breweryPhone = document.querySelector('#brewery-phone')
     breweryPhone.textContent = brewery.phone
@@ -37,6 +36,15 @@ function displayBreweryData(brewery){
     
     const breweryType = document.querySelector('#brewery-type')
     breweryType.textContent = brewery.brewery_type
+    newReview.innerHTML = ""
+    if(brewery.comment){
+        if(brewery.comment.length===1){
+            newReview.appendChild(brewery.comment[0])
+
+        }else{
+            brewery.comment.forEach(comment => newReview.appendChild(comment));
+    }
+}
 }
 
 function adressSetter(brewery){
@@ -68,13 +76,14 @@ function adressSetter(brewery){
 
 function displayReview(e){
     e.preventDefault()
-    
-    const newReview = document.querySelector('#reviews')
     const reviewToAdd = document.createElement('p')
-    newReview.appendChild(reviewToAdd)
-    reviewToAdd.textContent = e.target['text'].value
-    console.log(newReview)
-    console.log(e.target["text"].value)
-
+    reviewToAdd.textContent = e.target['random-name'].value
+    if (!currentBrewery.comment){
+        currentBrewery.comment = []
+    }
+    currentBrewery.comment.unshift(reviewToAdd)  
+    console.log(currentBrewery)
+    displayBreweryData(currentBrewery)
+    reviewForm.reset()
 }
 
