@@ -5,13 +5,13 @@ fetch('https://api.openbrewerydb.org/breweries')
 const reviewForm = document.querySelector('form')
 reviewForm.addEventListener('submit', e => displayReview(e))
 let currentBrewery = {}
-const newReview = document.querySelector('#reviews')
+const reviewDiv = document.querySelector('#reviews')
 
 
 function breweryList(brewery){
-    const breweryListBox = document.querySelector('#left')
+    const breweryListDiv = document.querySelector('#brewery-list')
     const breweryName = document.createElement('span')
-    breweryListBox.appendChild(breweryName)
+    breweryListDiv.appendChild(breweryName)
     breweryName.textContent = brewery.name
     breweryName.addEventListener('click', () => displayBreweryData(brewery))    
 }
@@ -24,27 +24,24 @@ function displayBreweryData(brewery){
     const breweryPhone = document.querySelector('#brewery-phone')
     breweryPhone.textContent = brewery.phone
     
-    const address = document.querySelector('#brewery-description')
+    const address = document.querySelector('#brewery-address')
     address.innerHTML = adressSetter(brewery)
 
     const website = document.querySelector('#brewery-website')
-    if(brewery.website_url){
-    website.textContent = brewery.website_url
-    }else{
-        website.textContent = "no website"
-    }
+    website.textContent = brewery.website_url ? brewery.website_url : "no website"
+  
     
     const breweryType = document.querySelector('#brewery-type')
     breweryType.textContent = brewery.brewery_type
-    newReview.innerHTML = ""
+    reviewDiv.innerHTML = ""
     if(brewery.comment){
         if(brewery.comment.length===1){
-            newReview.appendChild(brewery.comment[0])
+            reviewDiv.appendChild(brewery.comment[0])
 
         }else{
-            brewery.comment.forEach(comment => newReview.appendChild(comment));
+            brewery.comment.forEach(comment => reviewDiv.appendChild(comment));
+        }
     }
-}
 }
 
 function adressSetter(brewery){
@@ -76,6 +73,7 @@ function adressSetter(brewery){
 
 function displayReview(e){
     e.preventDefault()
+    if(Object.keys(currentBrewery).length !== 0){
     const reviewToAdd = document.createElement('p')
     reviewToAdd.textContent = e.target['random-name'].value
     if (!currentBrewery.comment){
@@ -84,6 +82,10 @@ function displayReview(e){
     currentBrewery.comment.unshift(reviewToAdd)  
     console.log(currentBrewery)
     displayBreweryData(currentBrewery)
+    }else{
+        alert('please select a brewery before leaving a review')
+    }
+
     reviewForm.reset()
 }
 
