@@ -2,12 +2,24 @@
     <head>
         <link rel="stylesheet" type="text/css" href="./index.css" />
         <script defer src="./index.js"></script>
+        <script defer src="./sort.js"></script>
     </head>
     <body>
        <header>
-           <h1>Breweries!</h1>
            <img src = 'https://fixcom.azureedge.net/assets/content/19743/craft-beer-header.png'>
        </header>
+       <form id="sort-form">
+            <div id = 'sort-features'>
+                <label for="select-how-to-sort">choose a sorting method</label>
+                <select name="brewery-sort" id ="select-how-to-sort">
+                    <option value="">--please choose an option--</option>
+                    <option value="by_state">state</option>
+                    <option value="by_type">brewery type</option>
+                    <label for="id">User ID:</label>
+                </select>
+            </div>
+            <input type="reset" value="Reset the form" />
+        </form>
        <div id="container">
             <section id="breweryListLeft">
                 <h2>Brewery List</h2>
@@ -28,7 +40,7 @@
                 </div>
                 
                 <h3> Brewery Review</h3>
-                <form>
+                <form id="review-form">
                     <textarea rows="5" cols="60" name="random-name" placeholder="Enter review"></textarea>
                     <br>
                     <input type="submit" value="submit"/>
