@@ -36,5 +36,5 @@ function newPage(e){
     }else if(e.target.id === "previous-page"){
         currentSortOption.pageNumber--
     }
-    fetchSort(currentSortOption)
+    fetchSort()
 }

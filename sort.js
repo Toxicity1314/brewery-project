@@ -3,15 +3,18 @@
 
 const currentSortOption = {sortingMethod:"", sortingOption:"", pageNumber: 1}
 const sortOptions = document.querySelector('#sort-options')
+
+//creates a variable for the select element #select-how-to-start and adds an
+//event listener that is waiting for a change event to occur on #select-how-to-start
+// when a change occurs brewerySortingMethod is called
 const brewerySortElement = document.querySelector('#select-how-to-sort')
 brewerySortElement.addEventListener('change', e => brewerySortingMethod(e))
+
 const sortForm =document.querySelector('#sort-form')
 sortForm.addEventListener('reset', ()=> formReset())
 
 function brewerySortingMethod(e){
-    formReset()
-    count = 1
-
+   formReset()
     if(e.target.value === "by_state"){
         const statesArray = ['Alabama','Alaska','Arizona','Arkansas','California','Colorado',
         'Connecticut','Delaware','Florida','Georgia','Hawaii','Idaho',
@@ -23,17 +26,17 @@ function brewerySortingMethod(e){
         'South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont',
         'Virginia','Washington','West Virginia','Wisconsin','Wyoming']
         currentSortOption.sortingMethod = e.target.value
-        sortFunction(currentSortOption, statesArray)
+        sortFunction(statesArray)
     }else if(e.target.value === 'by_type'){
         const breweryTypeOptions =['micro', 'nano', 'regional', 'brewpub', 'large', 'planning',
                                    'bar', 'contract']
         currentSortOption.sortingMethod = e.target.value
         
-        sortFunction(currentSortOption, breweryTypeOptions)
+        sortFunction(breweryTypeOptions)
     }
 }
 
-function sortFunction(currentSortOption, arrayOptions){
+function sortFunction(arrayOptions){
     currentSortOption.pageNumber = 1
     const select = document.createElement('select')
     const features = document.querySelector('#sort-options')
@@ -50,7 +53,7 @@ function sortFunction(currentSortOption, arrayOptions){
     })
     select.addEventListener('change', (e)=> {
         currentSortOption.sortingOption =e.target.value
-        fetchSort(currentSortOption)})
+        fetchSort()})
     
 
 
