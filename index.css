@@ -20,45 +20,41 @@ header img{
 
 #breweryListLeft {
     width:25%;
-    height: 100%;
+    height: auto;
     margin-left: 20px;
     margin-top: 20px;
     display:block;
+    border: solid;
 }
 
 #breweryListLeft h2 {
-    font-size: 3em;
+    font-size: 2em;
+    margin-top: 0px;
 }
 
 #container {
     display:flex;
-    height:100%;
+    height:auto;
 }
 
-#breweryListLeft span {
+#breweryListLeft p {
     padding: 0;
     margin: 0;
     font-size: 1.5rem;
 }
 
-#breweryListLeft span:not(:last-child) { 
+#breweryListLeft p:not(:last-child) { 
     margin-bottom: .5em;  
 }
 
-#breweryListLeft span {
-    float: left;
-    clear: left;
-}
-
-#breweryListLeft span:hover {
+#breweryListLeft p:hover {
     color: red;
     cursor: pointer;
 }
 
 #middle {
     position: relative;
-    margin-top: 20px;
-    margin-right: 20px;
+    margin: 20px;
     width: 100%;
     height: auto;
     
@@ -68,12 +64,12 @@ header img{
     position: relative;
     top:0px;
     margin-left: 0px;
-    margin-top: 20px;
+    margin-top: 0px;
     padding: 0px;
     width:auto;
     height:auto;
     background-color: rgba(255, 255, 255, 0.75);
-    border: solid;
+    
 }
 
 
