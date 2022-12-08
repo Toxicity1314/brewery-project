@@ -21,7 +21,7 @@ function breweryList(brewery){
 //that was clicked and sets currentBrewery equal to said brewery object.
 //This function then updates the text content of the child nodes of brewery-detail
 //with the appropriate information from the brewery object. The function will then
-//clear out any information in the #reviews node. If there is any reviews associated
+//clear out any information in the #reviews element. Once cleared if there is any reviews associated
 //with the brewery object then the function will append those reviews as a child element
 //to the #reviews element
 function displayBreweryData(brewery){
@@ -87,9 +87,9 @@ function addressSetter(brewery){
 }
 
 //this function is activated when the #reviews-form is submitted
-//it checks to see if the currentBrewery object has a comment key
-//if it does not it creates a comment key as an empty array.  It then
-//takes the data from the forms text box and appends it onto the front
+//it checks to see if the currentBrewery object has a comment key.
+//If it does not have a comment key it creates a comment key as an empty array.  
+//It then takes the data from the forms text box and appends it onto the front
 //of the array associated with the comment key. It then resets the form
 //and updates the DOM by sending the updated currentBrewry data to the
 //displayBreweryData function 
