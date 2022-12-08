@@ -1,6 +1,13 @@
+//global variables to be used for setting up next and previous buttons
 let nextPage = false
 let prevPage = false
 const container = document.querySelector('#container')
+
+//function checks to see if a next or previous button is applicable
+//if so it then checks to see if that button exists. If that button doesnt exist
+//it then creates the button and adds an event listener that points to the newPage function
+//if that button is not applicable it checks to see if the button exists and if it does it 
+//removes the button
 function pages(number){
     if(!nextPage){
         const btn = document.createElement('button')
@@ -30,6 +37,9 @@ function pages(number){
     }
 }
 
+
+//function checks to see what button has been pressed and updates currentSortOption.pageNumber accordingly
+//function then calls the fetchSort function in fetch.js with the updated data
 function newPage(e){
     if(e.target.id === "next-page"){
     currentSortOption.pageNumber++
