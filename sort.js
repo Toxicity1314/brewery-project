@@ -59,9 +59,6 @@ function sortFunction(arrayOptions){
         currentSortOption.sortingOption =e.target.value
         currentSortOption.pageNumber = 1
         fetchSort()})
-    
-
-
 }
 
 //resets the sortForm to look like it did on page load
