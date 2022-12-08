@@ -1,7 +1,7 @@
 
 //global variables and event listeners needed for sorting
 
-const currentSortOption = ["","",1]
+const currentSortOption = {sortingMethod:"", sortingOption:"", pageNumber: 1}
 const sortOptions = document.querySelector('#sort-options')
 const brewerySortElement = document.querySelector('#select-how-to-sort')
 brewerySortElement.addEventListener('change', e => brewerySortingMethod(e))
@@ -22,23 +22,23 @@ function brewerySortingMethod(e){
         'Ohio','Oklahoma','Oregon','Pennsylvania','Rhode Island',
         'South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont',
         'Virginia','Washington','West Virginia','Wisconsin','Wyoming']
-        currentSortOption[0] = e.target.value
+        currentSortOption.sortingMethod = e.target.value
         sortFunction(currentSortOption, statesArray)
     }else if(e.target.value === 'by_type'){
         const breweryTypeOptions =['micro', 'nano', 'regional', 'brewpub', 'large', 'planning',
                                    'bar', 'contract']
-        currentSortOption[0] = e.target.value
+        currentSortOption.sortingMethod = e.target.value
         
         sortFunction(currentSortOption, breweryTypeOptions)
     }
 }
 
 function sortFunction(currentSortOption, arrayOptions){
-    currentSortOption[2] = 1
+    currentSortOption.pageNumber = 1
     const select = document.createElement('select')
     const features = document.querySelector('#sort-options')
     const sort = document.createElement('label')
-    sort.textContent = `Sort brewerys by ${currentSortOption[0].split('by_')[1]}:`
+    sort.textContent = `Sort brewerys by ${currentSortOption.sortingMethod.split('by_')[1]}:`
     features.appendChild(sort)
     features.appendChild(select)
     select.appendChild(document.createElement('option')).textContent = "--please make a selection--"
@@ -49,7 +49,7 @@ function sortFunction(currentSortOption, arrayOptions){
         select.appendChild(choice)
     })
     select.addEventListener('change', (e)=> {
-        currentSortOption[1] =e.target.value
+        currentSortOption.sortingOption =e.target.value
         fetchSort(currentSortOption)})
     
 
@@ -57,13 +57,4 @@ function sortFunction(currentSortOption, arrayOptions){
 }
 function formReset(){
     sortOptions.innerHTML =""
-}
-
-function fetchSort(currentSortOption){
-    console.log(currentSortOption)
-    breweryListDiv.innerHTML =""
-    reviewDiv.innerHTML = ""
-    fetch(`https://api.openbrewerydb.org/breweries?${currentSortOption[0]}=${currentSortOption[1]}&per_page=50&page=${currentSortOption[2]}`)
-    .then(resp => resp.json())
-    .then(breweries => breweries.forEach(brewery => breweryList(brewery)))
 }

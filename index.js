@@ -1,13 +1,3 @@
-//gets data from the api and sends individual brewery objects to the breweryList function
-fetch('https://api.openbrewerydb.org/breweries?page=1&per_page=50')
-    .then(resp => resp.json())
-    .then(breweries => {
-        breweries.forEach(brewery => breweryList(brewery))
-        if(breweryListDiv.querySelectorAll('p').length > 20){
-            pages()
-        }    
-    })
-
 const breweryListDiv = document.querySelector('#brewery-list')
 const reviewForm = document.querySelector('#review-form')
 reviewForm.addEventListener('submit', e => displayReview(e))
